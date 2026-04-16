@@ -3,58 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Locs Atelier by Shee Booking</title>
+<title>Locs Atelier by Shee</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+<!-- FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
 
+<!-- EmailJS -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
 <style>
+
+/* BACKGROUND IMAGE */
 body {
-    font-family: 'Poppins', sans-serif;
     margin: 0;
-    background: linear-gradient(135deg, #f5e6e8, #fdf6f7);
+    font-family: 'Montserrat', sans-serif;
+    background: url('https://images.unsplash.com/photo-1605497787865-e6d4762b0b5b') no-repeat center center/cover;
 }
 
-/* Container */
+/* DARK OVERLAY */
+.overlay {
+    background: rgba(0,0,0,0.55);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* CONTAINER */
 .container {
     max-width: 500px;
     margin: 40px auto;
     background: white;
     padding: 30px;
     border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.3);
     animation: fadeIn 0.8s ease;
 }
 
-/* Logo */
-.logo {
-    text-align: center;
-    margin-bottom: 15px;
-}
-
-.logo img {
-    width: 120px;
-    border-radius: 50%;
-}
-
-/* Headings */
+/* TITLE */
 h1 {
     text-align: center;
     font-family: 'Playfair Display', serif;
-    color: #3e1f1f;
+    font-size: 30px;
+    color: #111;
     margin-bottom: 5px;
-    letter-spacing: 1px;
 }
 
 .subtitle {
     text-align: center;
     font-size: 14px;
-    color: #777;
-    margin-bottom: 20px;
+    color: #c59d5f;
+    font-weight: 500;
+    margin-bottom: 25px;
 }
 
-/* Form */
+/* FORM */
 label {
     font-weight: 500;
     margin-top: 12px;
@@ -63,31 +64,48 @@ label {
 
 input, select, textarea {
     width: 100%;
-    padding: 12px;
-    margin-top: 5px;
+    padding: 13px;
+    margin-top: 6px;
     border-radius: 12px;
     border: 1px solid #eee;
     font-size: 14px;
 }
 
-/* Button */
+/* FOCUS */
+input:focus, select:focus, textarea:focus {
+    border: 1px solid #c59d5f;
+    outline: none;
+}
+
+/* BUTTON */
 button {
     width: 100%;
     margin-top: 20px;
-    padding: 14px;
-    background: linear-gradient(135deg, #6b2c2c, #3e1f1f);
+    padding: 15px;
+    background: linear-gradient(135deg, #c59d5f, #a67c3b);
     color: white;
     border: none;
     border-radius: 12px;
     font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 button:hover {
-    transform: scale(1.03);
+    transform: scale(1.05);
 }
 
-/* WhatsApp */
+/* LOADING TEXT */
+.loading {
+    display: none;
+    text-align: center;
+    margin-top: 10px;
+    color: #c59d5f;
+    font-weight: 500;
+}
+
+/* WHATSAPP */
 .whatsapp {
     display: block;
     text-align: center;
@@ -97,7 +115,7 @@ button:hover {
     text-decoration: none;
 }
 
-/* Footer */
+/* FOOTER */
 .footer {
     text-align: center;
     font-size: 12px;
@@ -105,76 +123,79 @@ button:hover {
     color: #aaa;
 }
 
-/* Animation */
+/* ANIMATION */
 @keyframes fadeIn {
     from {opacity:0; transform:translateY(20px);}
     to {opacity:1; transform:translateY(0);}
 }
+
 </style>
 </head>
 
 <body>
 
+<div class="overlay">
+
 <div class="container">
 
-    <!-- LOGO (Replace src with your generated logo link later) -->
-    <div class="logo">
-        <img src="https://via.placeholder.com/120" alt="Locs Atelier Logo">
-    </div>
+<h1>Locs Atelier</h1>
+<div class="subtitle">by Shee ✨ Luxury Locs & Styling</div>
 
-    <h1>Locs Atelier</h1>
-    <div class="subtitle">by Shee — Luxury Locs & Hair Studio</div>
+<form id="bookingForm">
 
-    <form id="bookingForm">
+<label>Full Name</label>
+<input type="text" name="name" required>
 
-        <label>Full Name</label>
-        <input type="text" name="name" required>
+<label>Phone Number</label>
+<input type="tel" name="phone" required>
 
-        <label>Phone Number</label>
-        <input type="tel" name="phone" required>
+<label>Location</label>
+<input type="text" name="location" required>
 
-        <label>Location</label>
-        <input type="text" name="location" required>
+<label>Service</label>
+<select name="service" required>
+<option value="">Select Service</option>
+<option>Sister Locs Installation</option>
+<option>Artificial Locs & Extensions</option>
+<option>Instant Locs</option>
+<option>Fresh Locs</option>
+<option>Interlocking</option>
+<option>Clean Retouch</option>
+<option>Locs Repair</option>
+<option>Detox & Deep Cleaning</option>
+<option>Scalp Treatment</option>
+<option>Dope Styling</option>
+<option>Hair Colouring</option>
+<option>Locs Accessorizing</option>
+<option>Hair Consultation</option>
+<option>Products Recommendation</option>
+<option>Braiding</option>
+<option>Hair Cuts</option>
+<option>Gel Application</option>
+</select>
 
-        <label>Service</label>
-        <select name="service" required>
-            <option value="">Select Service</option>
-            <option>Sister Locs Installation</option>
-            <option>Artificial Locs & Extensions</option>
-            <option>Instant Locs</option>
-            <option>Fresh Locs</option>
-            <option>Interlocking</option>
-            <option>Clean Retouch</option>
-            <option>Locs Repair</option>
-            <option>Detox & Deep Cleaning</option>
-            <option>Scalp Treatment</option>
-            <option>Dope Styling</option>
-            <option>Hair Colouring</option>
-            <option>Locs Accessorizing</option>
-            <option>Hair Consultation</option>
-            <option>Products Recommendation</option>
-            <option>Braiding</option>
-            <option>Hair Cuts</option>
-            <option>Gel Application</option>
-        </select>
+<label>Date</label>
+<input type="date" name="date" required>
 
-        <label>Date</label>
-        <input type="date" name="date" required>
+<label>Time</label>
+<input type="time" name="time" required>
 
-        <label>Time</label>
-        <input type="time" name="time" required>
+<label>Notes</label>
+<textarea name="notes"></textarea>
 
-        <label>Notes</label>
-        <textarea name="notes"></textarea>
+<button type="submit">Book Appointment</button>
 
-        <button type="submit">Book Appointment</button>
-    </form>
+<div class="loading" id="loadingText">Sending booking...</div>
 
-    <a class="whatsapp" href="https://wa.me/254113832180?text=Hi%20I%20want%20to%20book%20a%20locs%20appointment">
-        Or Book via WhatsApp
-    </a>
+</form>
 
-    <div class="footer">We respond quickly — premium service guaranteed ✨</div>
+<a class="whatsapp" href="https://wa.me/254113832180?text=Hi%20I%20want%20to%20book%20a%20locs%20appointment">
+Book via WhatsApp instead
+</a>
+
+<div class="footer">Premium hair care experience ✨</div>
+
+</div>
 </div>
 
 <script>
@@ -185,6 +206,8 @@ button:hover {
 document.getElementById("bookingForm").addEventListener("submit", function(e) {
     e.preventDefault();
 
+    document.getElementById("loadingText").style.display = "block";
+
     emailjs.sendForm(
         "service_la0vybr",
         "template_w4vctxl",
@@ -192,6 +215,7 @@ document.getElementById("bookingForm").addEventListener("submit", function(e) {
     ).then(() => {
         window.location.href = "thankyou.html";
     }, (error) => {
+        document.getElementById("loadingText").style.display = "none";
         alert("Failed to send booking.");
         console.log(error);
     });
@@ -199,4 +223,4 @@ document.getElementById("bookingForm").addEventListener("submit", function(e) {
 </script>
 
 </body>
-  </html>
+                                   </html>
